@@ -15,10 +15,13 @@ public class HomeHandler {
     public HomeHandler() {
         System.out.println("我是HomeHandler 我被创建了");
     }
+
+
     @RequestMapping("home_{bb}")
     @ResponseBody
     public String home(@PathVariable("bb") String bb){
         return "Hello"+bb;
     }
+
 
 }
