@@ -3,7 +3,7 @@ package com.origin.atom;
 /**
  * Created by Administrator on 2016/9/10 0010.
  */
-public class HomeHanlder {
+public class HomeHandler {
 
 
     public static void main(String[] args) {
