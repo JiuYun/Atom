@@ -1,11 +1,9 @@
 package com.qiandu.Generator.interaction;
 
-import java.util.Iterator;
 
 
 
-import com.qiandu.Generator.constant.Constant;
-
+import com.qiandu.Generator.core.Entrance;
 
 
 /*****
@@ -17,14 +15,14 @@ import com.qiandu.Generator.constant.Constant;
 public class Interaction {
 
 
-
-    /****
-     * 交互入口
-     */
-    public static void main(){
-
+    public static void main(String[] args) {
+        Entrance entrance = new Entrance();
+        try {
+            entrance.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
 
     /****
      *
@@ -43,8 +41,8 @@ public class Interaction {
 
     public static void welcome(){
         System.out.println("|--------------------------------------------------------------------------------|");
-        System.out.println("|\t\t\t:-D ,欢迎使用Generator\t\t\t\t      |");
-        System.out.println("|\t\t\t\t\t——————不为别的,只为开发更方便！\t\t\t |");
+        System.out.println("|\t\t\t:-D ,欢迎使用Generator\t\t\t\t \t\t     |");
+        System.out.println("|\t\t\t\t\t——————不为别的,只为开发更方便！\t\t\t \t\t|");
         System.out.println("|--------------------------------------------------------------------------------|");
     }
 

@@ -3,7 +3,6 @@ package com.qiandu.Generator.core;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,9 +24,7 @@ public class BeanUtil {
      * 生成pojo
      */
     public static void doPojo(Map<String,TableModel> tableMap){
-
-
-        String path = "D:\\Project\\com.qiandu.Generator.core\\src\\com\\qiandu\\pojo\\";
+        String path = "F:\\sw\\project\\atom\\src\\main\\java\\com\\qiandu\\Generator\\pojo\\";
         TableModel model = null;
         for (String key : tableMap.keySet()) {
             StringBuffer sbpackage    = new StringBuffer( "" );//包部分
@@ -44,7 +41,7 @@ public class BeanUtil {
             model = tableMap.get(key);
 
             //生成头部
-            sbpackage.append("package com.qiandu.pojo;\r\r");
+            sbpackage.append("package com.qiandu.Generator.pojo;\r\r");
 
             //生成类名
             String className1 = model.getName().substring(0,1);
@@ -86,12 +83,18 @@ public class BeanUtil {
             sbstructure2 = new StringBuffer("");//有参数构造的构造体
             while (iterator.hasNext()) {
                 columnModel = iterator.next();
-                String type = Constant.DataTypeToJavaType(columnModel.getDataType());
+                String type = null;
+                if(columnModel.getDataType() != null && columnModel.getDataType().indexOf("Set") != -1){
+                    type = Constant.DataTypeToJavaType("set");
+                }else{
+                   type = Constant.DataTypeToJavaType(columnModel.getDataType());
+                }
 
                 if (type == null || type.equals( "null" )) {
                     System.err.println(columnModel.getDataType());
                     type = columnModel.getDataType();
                 }
+
                 //记录包部分
                 if(Constant.getPackage(columnModel.getDataType()) != null && !Constant.getPackage(columnModel.getDataType()).equals("") ){
                     set.add(Constant.getPackage(columnModel.getDataType()));
@@ -100,21 +103,35 @@ public class BeanUtil {
                 //生成属性名称
                 String columnName1 = columnModel.getColumnName().substring(0,1);
                 String columnName2 = columnModel.getColumnName().substring(1);
+                if(columnName2.indexOf("_") != -1){
+                    boolean isTo = false;
+                    String tempColumnName = "";
+                    for(String str : columnName2.split("_")){
+                        if(!isTo){
+                            tempColumnName += str;
+                            isTo = true;continue;
+                        }
+                        if(str != null && str.length() <= 0){continue;}
+                        tempColumnName += (str.substring(0,1).toUpperCase()+str.substring(1,str.length()));
+                    }
+                    columnName2 = tempColumnName;
+                }
                 String paramsName  =  columnName1.toLowerCase()+columnName2;
+                String paramsName2 =  columnName1.toUpperCase()+columnName2;
                 sbparams.append("    private "+type+" "+paramsName+";//"+columnModel.getNotes()+"\r\r");
 
 
                 //生成Get
-                sbGetSet.append("    public "+type+" get"+paramsName+" (){\r");
+                sbGetSet.append("    public "+type+" get"+paramsName2+" (){\r");
                 sbGetSet.append("        return this."+paramsName+";\r");
                 sbGetSet.append("    }\r\r");
                 //生成Set
-                sbGetSet.append("    public void set"+paramsName+" ("+type+" "+paramsName+"){\r");
+                sbGetSet.append("    public void set"+paramsName2+" ("+type+" "+paramsName+"){\r");
                 sbGetSet.append("        this."+paramsName+" = "+paramsName+";\r");
                 sbGetSet.append("    }\r\r");
 
                 //生成有参数构造方法参数
-                sbstructure0.append(type+" "+paramsName+",");
+                sbstructure0.append(type+" "+   paramsName+",");
                 //生成有参数构造的方法体
                 sbstructure1.append("        this."+paramsName+"\t=\t"+paramsName+";\r");
             }
@@ -150,17 +167,49 @@ public class BeanUtil {
             content.append(sbGetSet);
             content.append("}\r\r");
 
-            //保存到文件
-            File file = new File(path+fileName);
-            try {
-                PrintStream printStream = new PrintStream(file);
-                printStream.print(content.toString());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            FileUtil.saveStringToFile(path,fileName,content.toString());
         }
     }
 
+
+    /***
+     * 生产MyBatisMapper
+     * @param tableMap
+     */
+    public static void doMapper(Map<String,TableModel> tableMap){
+        TableModel tableModel = null;
+        Iterator iterator = tableMap.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String,TableModel> entry = (Map.Entry) iterator.next();
+            String tableName = entry.getKey();
+            tableModel = entry.getValue();
+
+            //生成save方法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+    }
 
 
 

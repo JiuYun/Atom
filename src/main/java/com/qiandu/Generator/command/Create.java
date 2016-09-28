@@ -1,6 +1,5 @@
 package com.qiandu.Generator.command;
 
-import com.qiandu.Generator.Model.TableModel;
 
 
 
@@ -10,13 +9,6 @@ import com.qiandu.Generator.Model.TableModel;
  *
  */
 public class Create {
-
-    public void tableTopojo(TableModel table){
-
-
-
-    }
-
 
 
 }

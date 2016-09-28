@@ -1,0 +1,21 @@
+/**  package info **/
+/**  import package info **/
+
+
+public class ${MeFunction.fromatClassName(className)}{
+
+    <%for(column in columns){%>
+        private ${column.dataType} ${MeFunction.fromatColumnName(column.columnName)};
+    <%}%>
+
+    <%for(column in columns){%>
+
+        public ${column.dataType} get${MeFunction.fromatClassName(column.columnName)}(){
+            return this.${MeFunction.fromatColumnName(column.columnName)};
+        }
+        public void set${MeFunction.fromatClassName(column.columnName)}(${column.dataType} ${MeFunction.fromatColumnName(column.columnName)}){
+            this.${MeFunction.fromatColumnName(column.columnName)} = ${MeFunction.fromatColumnName(column.columnName)};
+        }
+
+    <%}%>
+}

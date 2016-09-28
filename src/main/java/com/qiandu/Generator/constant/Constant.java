@@ -13,12 +13,12 @@ import java.util.Set;
  */
 public final class Constant {
 
-    //注释部分
+       //注释部分
     public static final String ANNOTATION_AUTHOR="@author";
     public static final String ANNOTATION_NewDate="@NewDate";
     public static final String ANNOTATION_EXPLAIN="@Explain";
 
-    //实体包名部分
+      //实体包名部分
     public static final String DEFAULT_DAO_PACKAGE="com.qiandu.dao";
     public static final String DEFAULT_MODEL_PACKAGE="com.qiandu.pojo";
     public static final String DEFAULT_SERVER_PACKAGE="com.qiandu.server";
@@ -89,7 +89,6 @@ public final class Constant {
         type.put("mediumblob","byte[]");
         type.put("mediumint", "int");
         type.put("numeric", "long");
-        type.put("datatime","Date");
         type.put("datetime","Date");
         type.put("date","Date");
         type.put("double","Double");

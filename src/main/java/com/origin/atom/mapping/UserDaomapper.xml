@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.origin.atom.dao.IUsersDaoMapper">
+
+    <insert id="saveUser" parameterType="Map">
+        insert into users(id,user_name,password,email)value(#{id},#{userName},#{password},#{email});
+    </insert>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
