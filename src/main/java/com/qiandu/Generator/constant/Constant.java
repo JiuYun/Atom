@@ -95,11 +95,11 @@ public final class Constant {
         type.put("tinyint","int");
 
         //添加程序数据类型对应的包，当然这里我们目前做生成Pojo需要不了多少对应包
-        bao.put("date","java.util.Date;");
-        bao.put("datetime","java.util.Date;");
-        bao.put("set","java.util.Set;");
-        bao.put("hashset","java.util.HashSet;");
-        bao.put("util","java.util.*;");
+        bao.put("date","java.util.Date");
+        bao.put("datetime","java.util.Date");
+        bao.put("set","java.util.Set");
+        bao.put("hashset","java.util.HashSet");
+        bao.put("util","java.util.*");
 
 
         //注册驱动

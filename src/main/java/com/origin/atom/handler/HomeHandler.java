@@ -1,6 +1,7 @@
 package com.origin.atom.handler;
 
 import com.origin.atom.dao.IUsersDaoMapper;
+import com.origin.atom.server.ITableServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.ObjectError;
@@ -19,6 +20,9 @@ public class HomeHandler {
 
     @Autowired
     private IUsersDaoMapper userDao;
+
+    @Autowired
+    private ITableServer tableServer;
 
 
     @RequestMapping("home")
@@ -39,6 +43,28 @@ public class HomeHandler {
         userDao.saveUser(params);
         return "OK";
     }
+
+
+
+
+    @RequestMapping("tables")
+    @ResponseBody
+    public Object tables(){
+        return tableServer.tableModels();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

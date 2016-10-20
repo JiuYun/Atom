@@ -1,5 +1,6 @@
 package com.generator.me;
 
+import com.qiandu.Generator.constant.Constant;
 import org.beetl.core.Context;
 import org.beetl.core.Function;
 
@@ -51,6 +52,39 @@ public class FromatClassName{
             return columnName.substring(0,1).toLowerCase()+columnName.substring(1,columnName.length());
         }
     }
+
+
+    /****
+     * 数据库数据类型转换为Java数据类型
+     * 如果无法识别则转换为Object
+     * @param dataType
+     * @return
+     */
+    public String dataTypeToJavaType(String dataType){
+        if(dataType == null || dataType.trim().length() == 0){return "";}
+        String type = Constant.DataTypeToJavaType(dataType);
+        if(type != null){return type;}
+        return "Object";
+    }
+
+
+    /****
+     * 为数据库字段类型转换为Java导包部分
+     * @param dataType
+     * @return
+     */
+    public String dataTypeToImport(String dataType){
+        if(dataType == null || dataType.trim().length() == 0){return "";}
+        String type = Constant.DataTypeToJavaType(dataType);
+        if(type == null){return "";}
+        String improt = Constant.getPackage(type.toLowerCase());
+        if(improt != null){
+            return String.format("import %s;",improt);
+        }else{
+            return "";
+        }
+    }
+
 
 
 

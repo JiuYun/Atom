@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.origin.atom.dao.ITableDaoMapper">
+
+
+    <!-- 获取MySql所有数据库表 -->
+    <select id="tables" resultType="map">
+        select table_name,column_name,data_type,column_comment,column_key from information_schema.columns where table_schema = 'orgin'
+    </select>
+
+
+
+
+
+
+
+
+</mapper>

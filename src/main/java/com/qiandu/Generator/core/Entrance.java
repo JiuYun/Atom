@@ -89,6 +89,7 @@ public class Entrance {
             tableMap.get(key);
             t.binding("className",tableModel.getName());
             t.binding("columns",tableModel.getColumn());
+            t.binding("packageInfo","com.qianyun.core");
             String str = t.render();
             System.out.println(str);
         }
