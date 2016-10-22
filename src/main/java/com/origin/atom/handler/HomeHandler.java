@@ -4,8 +4,6 @@ import com.origin.atom.dao.IUsersDaoMapper;
 import com.origin.atom.server.ITableServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,7 +48,12 @@ public class HomeHandler {
     @RequestMapping("tables")
     @ResponseBody
     public Object tables(){
-        return tableServer.tableModels();
+    	Map<String,Object> resultJson = new HashMap<String, Object>();
+    	resultJson.put("params1", "params_1");
+    	resultJson.put("params2", "params_2");
+    	resultJson.put("params3", "params_3");
+    	resultJson.put("params4", "params_4");
+    	return resultJson;
     }
 
 
