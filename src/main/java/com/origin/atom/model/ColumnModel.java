@@ -28,7 +28,6 @@ public class ColumnModel implements Serializable{
 
 
     public ColumnModel() {
-        // TODO Auto-generated constructor stub
     }
 
 

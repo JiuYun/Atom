@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.origin.atom.dao.IUsersDaoMapper;
+import com.origin.atom.model.DataModel;
 import com.origin.atom.server.ITableServer;
 
 import org.beetl.ext.fn.Json;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.awt.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,22 +63,25 @@ public class HomeHandler {
     	return tableServer.tableModels("blog");
     }
 
-
     
 
     /***
      * 根据指定表与列生成相应的功能
      * 
-     * @param param  [{"table1Name":"user","columns":["user_Name","password","age"]},....]
+     * @param param  [{"tableName":"user","columns":["user_Name","password","age"]},{"tableName":"aaaa","columns":["123","321"]}]
      * @return
      */
     public String tableToFunction(String param){
     	if(param != null){
-    		JSONObject jsonObject = (JSONObject) JSON.parse(param);
+    		List<DataModel> models = JSON.parseArray(param, DataModel.class);
+    		
+    		
+    		
+    		
+    		
+    		
     	}
     	return null;
     }
-    
  
-
 }

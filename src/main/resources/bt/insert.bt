@@ -1,0 +1,18 @@
+<%
+	var s_columns = "";			//数据库表名
+	var s_params  = "";			//params参数名
+	var firstColu = true;
+	for(column in columns){
+		if(firstColu){
+			firstColu 	= false;
+			s_columns 	+= column.tableColumnName;
+			s_params	+= "#{"+column.paraName+"}";
+		}else{
+			s_columns 	+= ","+column.tableColumnName;
+			s_params	+= ",#{"+column.paraName+"}";
+		}
+	}
+%>
+<insert id="" parameterType="Map">
+	insert into ${tableName}(${s_columns}) values(${s_params});
+</insert>
