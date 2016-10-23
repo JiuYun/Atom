@@ -1,4 +1,4 @@
-package com.origin.atom.Model;
+package com.origin.atom.model;
 
 import java.io.Serializable;
 

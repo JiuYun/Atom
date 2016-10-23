@@ -5,7 +5,7 @@
 
     <!-- 获取MySql所有数据库表 -->
     <select id="tables" resultType="map">
-        select table_name,column_name,data_type,column_comment,column_key from information_schema.columns where table_schema = 'orgin'
+        select table_name,column_name,data_type,column_comment,column_key from information_schema.columns where table_schema = #{dataBaseName}
     </select>
 
 

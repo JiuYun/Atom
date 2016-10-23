@@ -1,9 +1,10 @@
 package com.origin.atom.dao;
 
-import com.origin.atom.Model.TableModel;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/17 0017.
@@ -11,8 +12,7 @@ import java.util.List;
 @Repository
 public interface ITableDaoMapper {
 
-    List<TableModel> tables();
-
+    List<Map<String,String>> tables(String dataBaseName);
 
 
 
