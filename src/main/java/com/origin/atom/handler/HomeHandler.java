@@ -1,18 +1,23 @@
 package com.origin.atom.handler;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.generator.me.FromatClassName;
 import com.origin.atom.dao.IUsersDaoMapper;
 import com.origin.atom.model.DataModel;
+import com.origin.atom.model.TableModel;
 import com.origin.atom.server.ITableServer;
 
-import org.beetl.ext.fn.Json;
+import org.beetl.core.Configuration;
+import org.beetl.core.GroupTemplate;
+import org.beetl.core.Template;
+import org.beetl.core.resource.ClasspathResourceLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,8 +64,10 @@ public class HomeHandler {
      */
     @RequestMapping("tables")
     @ResponseBody
-    public Object tables(){
-    	return tableServer.tableModels("blog");
+    public Object tables(HttpServletRequest requeset){
+        Map<String,TableModel> tables = tableServer.tableModels("orgin");
+        requeset.getSession().setAttribute("tables",tables);
+    	return tables;
     }
 
     
@@ -74,14 +81,35 @@ public class HomeHandler {
     public String tableToFunction(String param){
     	if(param != null){
     		List<DataModel> models = JSON.parseArray(param, DataModel.class);
-    		
-    		
-    		
-    		
-    		
-    		
+
+
+
+
+
+
     	}
     	return null;
     }
+
+
+    @RequestMapping("createMyBatisXmlByTableName")
+    @ResponseBody
+    public Object crateMyBatisXmlByTableName(String tableName,HttpServletRequest request) throws IOException {
+        Map<String,TableModel> models = (Map<String, TableModel>) request.getSession().getAttribute("tables");
+        TableModel tableModel = models.get(tableName);
+
+        ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
+        Configuration cfg = Configuration.defaultConfiguration();
+        GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
+        gt.registerFunctionPackage("MeFunction",FromatClassName.class);
+        Template t = gt.getTemplate("/bt/insert.bt");
+        t.binding("columns",tableModel.getColumn());
+        t.binding("tableName",tableModel.getName());
+        return t.render();
+    }
+
+
+
+
  
 }

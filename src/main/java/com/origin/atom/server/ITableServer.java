@@ -3,8 +3,10 @@ package com.origin.atom.server;
 import com.origin.atom.model.TableModel;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /***
  *
@@ -12,6 +14,7 @@ import org.apache.ibatis.annotations.Param;
  *
  *
  */
+@Repository
 public interface ITableServer {
 
 
@@ -20,7 +23,7 @@ public interface ITableServer {
      * @param dataBaseName 			数据库名称
      * @return
      */
-    List<TableModel> tableModels(@Param("dataBaseName")String dataBaseName);
+    Map<String,TableModel> tableModels(@Param("dataBaseName")String dataBaseName);
 
 
 

@@ -24,7 +24,7 @@ public class tableServerImpl implements ITableServer{
     private ITableDaoMapper tableDaoMapper;
 
 
-    public List<TableModel> tableModels(String dataBaseName) {
+    public Map<String,TableModel> tableModels(String dataBaseName) {
     	List<Map<String, String>> 	columns 		= tableDaoMapper.tables(dataBaseName);
     	Map<String,TableModel> 		tables 			= null;
     	if(columns != null){
@@ -61,7 +61,7 @@ public class tableServerImpl implements ITableServer{
 	            tableModel.getColumn().add(columnModel);
 			}
     	}
-        return tables != null ? new ArrayList<TableModel>(tables.values()) : null;
+        return tables != null ? tables : null;
     }
     
     

@@ -5,14 +5,14 @@
 	for(column in columns){
 		if(firstColu){
 			firstColu 	= false;
-			s_columns 	+= column.tableColumnName;
-			s_params	+= "#{"+column.paraName+"}";
+			s_columns   = s_columns + column.columnName;
+			s_params	= s_params + "#{"+MeFunction.fromatColumnName(column.columnName)+"}";
 		}else{
-			s_columns 	+= ","+column.tableColumnName;
-			s_params	+= ",#{"+column.paraName+"}";
+			s_columns 	= s_columns + ","+column.columnName ;
+			s_params	= s_params + ",#{"+MeFunction.fromatColumnName(column.columnName)+"}";
 		}
 	}
 %>
 <insert id="" parameterType="Map">
-	insert into ${tableName}(${s_columns}) values(${s_params});
+	insert into ${tableName}(${s_columns}) value(${s_params});
 </insert>
