@@ -108,8 +108,23 @@ public class HomeHandler {
         return t.render();
     }
 
+    @RequestMapping("delete")
+    @ResponseBody
+    public Object delete(String tableName,HttpServletRequest request) throws IOException {
+        Map<String,TableModel> models = (Map<String, TableModel>) request.getSession().getAttribute("tables");
+        TableModel tableModel = models.get(tableName);
+
+        ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
+        Configuration cfg = Configuration.defaultConfiguration();
+        GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
+        gt.registerFunctionPackage("MeFunction",FromatClassName.class);
+        Template t = gt.getTemplate("/bt/delete.bt");
+        t.binding("columns",tableModel.getColumn());
+        t.binding("tableName",tableModel.getName());
+        return t.render();
+    }
 
 
 
- 
+
 }

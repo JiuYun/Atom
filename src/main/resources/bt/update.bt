@@ -1,0 +1,16 @@
+<%
+	var sqlWhere = null;
+	var setSql = null;
+	var firstFor = true;
+    for(column in columns){
+        if(firstFor){
+           firstFor = false;
+           sqlWhere = " set "column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+        }else{
+           sqlWhere = sqlWhere + ", set " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+        }
+    }
+%>
+<delete id="delete${MeFunction.fromatClassName(tableName)}">
+    update ${tableName} ${setSql} where ${sqlWhere}
+</delete>
