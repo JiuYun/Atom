@@ -10,6 +10,6 @@
         }
     }
 %>
-<delete id="delete${MeFunction.fromatClassName(tableName)}">
-    delete from ${tableName} where ${sqlWhere}
-</delete>
+    <delete id="delete${MeFunction.fromatClassName(tableName)}" parameterType="Map">
+        delete from ${tableName} where ${sqlWhere}
+    </delete>

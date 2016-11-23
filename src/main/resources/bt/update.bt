@@ -1,16 +1,25 @@
 <%
-	var sqlWhere = null;
-	var setSql = null;
-	var firstFor = true;
+	var sqlWhere    = null;
+	var setSql      = null;
+	var firstFor    = true;
     for(column in columns){
         if(firstFor){
            firstFor = false;
-           sqlWhere = " set "column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           setSql = "set " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           if(column.isWhere){
+                sqlWhere = sqlWhere + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           }
         }else{
-           sqlWhere = sqlWhere + ", set " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           setSql = setSql + ", " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           if(column.isWhere){
+                sqlWhere = sqlWhere +" and " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           }
         }
     }
 %>
-<delete id="delete${MeFunction.fromatClassName(tableName)}">
-    update ${tableName} ${setSql} where ${sqlWhere}
-</delete>
+    <update id="update{MeFunction.fromatClassName(tableName)}" parameterType="Map">
+        update ${tableName} ${setSql}
+        <where>
+              ${sqlWhere}
+        </where>
+    </update>
