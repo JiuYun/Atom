@@ -10,7 +10,6 @@ import org.beetl.core.Template;
 import org.beetl.core.resource.ClasspathResourceLoader;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 
 /***
@@ -97,6 +96,33 @@ public class CoreServer {
     }
 
 
+    /***
+     *
+     * 将文件字符串保存到XML中
+     *
+     * @param path                          文件路径
+     * @param fileName                      文件名称
+     * @param appendContext                 文件内容
+     * @return
+     */
+    public boolean saveToXml(String path,String fileName,String appendContext){
+        try {
+            if(FileUtil.existsFile(path,fileName)){
+
+            }else {
+
+            }
+        }catch (Exception ex){
+
+        }
+        return true;
+    }
+
+
+
+
+
+
 
 
     public static void main(String[] args) throws IOException {
@@ -104,24 +130,9 @@ public class CoreServer {
 
         CoreServer coreServer = new CoreServer();
         String str = "{\"tableName\":\"hello\",\"columns\":[{\"columnName\":\"id\",\"isWhere\":true},{\"columnName\":\"user_Name\",\"isWhere\":true},{\"columnName\":\"password\",\"isWhere\":false},{\"columnName\":\"pro_Code\",\"isWhere\":false}]}";
-        String insert = coreServer.delete(str);
+        String insert = coreServer.serach(str);
         FileUtil.saveToFile(projectPath,"hello.xml",insert,true);
         System.out.println(insert);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
 }

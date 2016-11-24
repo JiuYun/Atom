@@ -10,22 +10,6 @@ import java.io.*;
  */
 public class FileUtil {
 
-    /***
-     * 保存字符串到文件中
-     * @param path                  文件路径
-     * @param fileName              文件名称
-     * @param content               文件内容
-     */
-    public static void saveStringToFile(String path,String fileName,String content){
-        File file = new File(path+fileName);
-        try {
-            PrintStream printStream = new PrintStream(file);
-            printStream.print(content);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     /***
      * 读取文件内容
@@ -168,6 +152,19 @@ public class FileUtil {
             if(fos != null){fos.close();}
         }
         return true;
+    }
+
+    /***
+     *
+     * 检查文件是否存在
+     *
+     * @param path                      文件路径
+     * @param fileName                  文件名称
+     * @return
+     */
+    public static boolean existsFile(String path,String fileName){
+        File file = new File(path + File.separator + fileName);
+        return file.exists();
     }
 
 
