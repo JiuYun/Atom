@@ -1,10 +1,28 @@
-
-
-
-
+<%
+    var sqlWhere    = null;
+	var colSql      = null;
+	var firstFor    = true;
+    for(column in columns){
+        if(firstFor){
+           firstFor = false;
+           colSql = column.columnName;
+           if(column.isWhere){
+                sqlWhere = sqlWhere + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           }
+        }else{
+           colSql = colSql + ", " + column.columnName;
+           if(column.isWhere){
+                sqlWhere = sqlWhere +" and " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           }
+        }
+    }
+%>
 
 <select id="" parameterType="Map" resultType="">
-    select from where
+    select ${colSql} from ${tableName}
+    <where>
+        ${sqlWhere}
+    </where>
 </select>
 
 

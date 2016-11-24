@@ -10,6 +10,7 @@ import org.beetl.core.Template;
 import org.beetl.core.resource.ClasspathResourceLoader;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 
 /***
@@ -99,28 +100,28 @@ public class CoreServer {
 
 
     public static void main(String[] args) throws IOException {
+        String projectPath = System.getProperty("user.dir")+"\\src\\main\\java\\com\\origin\\atom\\mapping";
+
         CoreServer coreServer = new CoreServer();
-        String str = "{\"tableName\":\"hello\",\"columns\":[{\"columnName\":\"id\",\"isWhere\":true},{\"columnName\":\"user_Name\",\"isWhere\":true},{\"columnName\":\"pawword\",\"isWhere\":false},{\"columnName\":\"pro_Code\",\"isWhere\":false}]}";
-        String insert = coreServer.serach(str);
-        FileUtil.saveToFile("D:/javaTemp","insert.xml",insert,false);
+        String str = "{\"tableName\":\"hello\",\"columns\":[{\"columnName\":\"id\",\"isWhere\":true},{\"columnName\":\"user_Name\",\"isWhere\":true},{\"columnName\":\"password\",\"isWhere\":false},{\"columnName\":\"pro_Code\",\"isWhere\":false}]}";
+        String insert = coreServer.delete(str);
+        FileUtil.saveToFile(projectPath,"hello.xml",insert,true);
         System.out.println(insert);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
