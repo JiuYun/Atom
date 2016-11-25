@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2016/9/17 0017.
  */
-@Repository
+@Repository("userDao")
 public interface IUsersDaoMapper {
 
 

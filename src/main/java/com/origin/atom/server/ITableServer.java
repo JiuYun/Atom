@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  *  访问数据库查询所有表信息
  *
  */
-@Repository
+@Repository("tableServer")
 public interface ITableServer {
 
 

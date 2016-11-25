@@ -125,6 +125,31 @@ public class CoreServer {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) throws IOException {
         String projectPath = System.getProperty("user.dir")+"\\src\\main\\java\\com\\origin\\atom\\mapping";
 
@@ -133,6 +158,5 @@ public class CoreServer {
         String insert = coreServer.serach(str);
         FileUtil.saveToFile(projectPath,"hello.xml",insert,true);
         System.out.println(insert);
-
     }
 }
