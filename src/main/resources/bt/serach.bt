@@ -2,27 +2,32 @@
     var sqlWhere    = null;
 	var colSql      = null;
 	var firstFor    = true;
-    for(column in columns){
-        if(firstFor){
-           firstFor = false;
-           colSql = column.columnName;
-           if(column.isWhere){
-                sqlWhere = sqlWhere + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
-           }
-        }else{
-           colSql = colSql + ", " + column.columnName;
-           if(column.isWhere){
-                sqlWhere = sqlWhere +" and " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
-           }
-        }
+	var orderBy     = null;
+    for(column in fun.columns){
+        if(firstFor){firstFor = false;colSql = column;continue;}
+        colSql = colSql + "," + column;
+    }
+
+    firstFor = true;
+    for(column in fun.where){
+        if(firstFor){firstFor = false;sqlWhere = column + " = #{" +MeFunction.fromatColumnName(column)+"}" ;continue;}
+        sqlWhere = sqlWhere + "," + column + " = #{" +MeFunction.fromatColumnName(column)+"}" ;
+    }
+
+    firstFor = true;
+    for(column in fun.orderBy){
+        if(firstFor){firstFor = false;orderBy = "order by " + column;continue;}
+        orderBy + " , " + column;
     }
 %>
 
-<select id="" parameterType="Map" resultType="">
-    select ${colSql} from ${tableName}
+<!-- ${fun.comment} -->
+<select id="${fun.funName}" parameterType="Map" resultType="">
+    select ${colSql} from ${fun.from}
     <where>
         ${sqlWhere}
     </where>
+    ${orderBy}
 </select>
 
 

@@ -4,6 +4,7 @@ package com.origin.atom.server.impl;
 import com.alibaba.fastjson.JSON;
 import com.generator.me.FromatClassName;
 import com.origin.atom.FileUtil.FileUtil;
+import com.origin.atom.model.SeracheFunModel;
 import org.beetl.core.Configuration;
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
@@ -84,14 +85,12 @@ public class CoreServer {
      * 查询
      *
      *
-     * @param params
+     * @param fun
      * @return
      */
-    public String serach(String params){
-        HashMap temp = JSON.parseObject(params,HashMap.class);
+    public String serach(SeracheFunModel fun){
         Template t = gt.getTemplate("/bt/serach.bt");
-        t.binding("columns",temp.get("columns"));
-        t.binding("tableName",temp.get("tableName"));
+        t.binding("fun",fun);
         return t.render();
     }
 
@@ -152,11 +151,11 @@ public class CoreServer {
 
     public static void main(String[] args) throws IOException {
         String projectPath = System.getProperty("user.dir")+"\\src\\main\\java\\com\\origin\\atom\\mapping";
-
-        CoreServer coreServer = new CoreServer();
-        String str = "{\"tableName\":\"hello\",\"columns\":[{\"columnName\":\"id\",\"isWhere\":true},{\"columnName\":\"user_Name\",\"isWhere\":true},{\"columnName\":\"password\",\"isWhere\":false},{\"columnName\":\"pro_Code\",\"isWhere\":false}]}";
-        String insert = coreServer.serach(str);
-        FileUtil.saveToFile(projectPath,"hello.xml",insert,true);
-        System.out.println(insert);
+//
+//        CoreServer coreServer = new CoreServer();
+//        String str = "{\"tableName\":\"hello\",\"columns\":[{\"columnName\":\"id\",\"isWhere\":true},{\"columnName\":\"user_Name\",\"isWhere\":true},{\"columnName\":\"password\",\"isWhere\":false},{\"columnName\":\"pro_Code\",\"isWhere\":false}]}";
+//        String insert = coreServer.serach(str);
+//        FileUtil.saveToFile(projectPath,"hello.xml",insert,true);
+//        System.out.println(insert);
     }
 }

@@ -18,6 +18,8 @@ public class SeracheFunModel {
 
     private String comment;                     //功能描述
 
+    private String from;                        //谁是主表
+
 
 
     public String[] getOrderBy() {
@@ -58,5 +60,13 @@ public class SeracheFunModel {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
     }
 }
