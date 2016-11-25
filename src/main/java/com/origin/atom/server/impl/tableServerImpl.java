@@ -1,6 +1,6 @@
 package com.origin.atom.server.impl;
 
-import com.alibaba.fastjson.JSON;
+import com.generator.me.FromatClassName;
 import com.origin.atom.dao.ITableDaoMapper;
 import com.origin.atom.model.ColumnModel;
 import com.origin.atom.model.TableModel;
@@ -9,7 +9,6 @@ import com.origin.atom.server.ITableServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,7 +24,8 @@ public class tableServerImpl implements ITableServer{
     private ITableDaoMapper tableDaoMapper;
 
 
-    public Map<String,TableModel> tableModels(String dataBaseName) {
+	public Map<String,TableModel> tableModels(String dataBaseName) {
+		FromatClassName				fc				= new FromatClassName();
     	List<Map<String, String>> 	columns 		= tableDaoMapper.tables(dataBaseName);
     	Map<String,TableModel> 		tables 			= null;
     	if(columns != null){
@@ -46,19 +46,28 @@ public class tableServerImpl implements ITableServer{
 	            columnModel = new ColumnModel();
 	            columnModel.setColumnName( 	column.get("column_name") );
 	            columnModel.setDataType( column.get("data_type") );
-	            columnModel.setNotes( column.get("column_comment") );
-	            //解析关系
-	            String col = column.get("column_key");
-	            String[] result = col.split("FK");
-	            if (result.length == 2) {
-	                String[] fk = result[1].split(" ");
-	                String type1 = fk[1].substring(0,1);
-	                String type2 = fk[1].substring(1);
-	                String type = type1.toUpperCase()+type2;
-	                columnModel.setDataType(type);
-	                columnModel.setColumnName(fk[1]);
-	            }
-	            if(column.get("column_key").toString() == "PRI") {columnModel.setPk(true);}
+				if("PRI".equals(column.get("column_key"))){columnModel.setPk(true);}else {columnModel.setPk(false);}
+				columnModel.setNotes( column.get("column_comment") );
+
+				//解析关系
+				if(columnModel.getNotes() != null && columnModel.getNotes().trim().length() >= 6){
+					int startIndex,endIndex;
+					startIndex 	= columnModel.getNotes().indexOf("[");
+					endIndex	= columnModel.getNotes().indexOf("]");
+					if(startIndex >= 0 && endIndex > (startIndex+4)){
+						String 		FKStr 		= columnModel.getNotes().substring(startIndex+1,endIndex);
+						String[] 	optArray	= FKStr.split(",");
+						for (String t : optArray){
+							String[] opt = t.split(":");
+							if(opt.length == 2){
+								if(opt[0].equals("FK")){
+									columnModel.setDataType(fc.fromatClassName(opt[1]));
+									columnModel.setColumnName(opt[1]);
+								}
+							}
+						}
+					}
+				}
 	            tableModel.getColumn().add(columnModel);
 			}
     	}
