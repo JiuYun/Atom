@@ -95,6 +95,7 @@ public class CoreServer {
     }
 
 
+
     /***
      *
      * 将文件字符串保存到XML中
@@ -107,55 +108,41 @@ public class CoreServer {
     public boolean saveToXml(String path,String fileName,String appendContext){
         try {
             if(FileUtil.existsFile(path,fileName)){
-
+                String fileContext = FileUtil.readFileByReader(path,fileName);
+                int lastMapperIndex = fileContext.lastIndexOf("</mapper>");
+                String contextQ1 = fileContext.substring(0,lastMapperIndex);
+                String contextQ2 = fileContext.substring(lastMapperIndex);
+                String contextQ3 = contextQ1 + "\r\n"+ appendContext + "\r\n" + contextQ2;
+                FileUtil.saveToFile(path,fileName,contextQ3,false);
             }else {
-
+                String mapperQ1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                        "<!DOCTYPE mapper SYSTEM \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
+                        "<mapper namespace=\"com.origin.atom.dao.ITableDaoMapper\">";
+                String mapperQ2 = "</mapper>";
+                String mapperQ3 = mapperQ1 + "\r\n"+ appendContext + "\r\n" + mapperQ2;
+                FileUtil.saveToFile(path,fileName,mapperQ3,false);
             }
         }catch (Exception ex){
-
+            ex.printStackTrace();
         }
         return true;
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void main(String[] args) throws IOException {
         String projectPath = System.getProperty("user.dir")+"\\src\\main\\java\\com\\origin\\atom\\mapping";
-//
-//        CoreServer coreServer = new CoreServer();
-//        String str = "{\"tableName\":\"hello\",\"columns\":[{\"columnName\":\"id\",\"isWhere\":true},{\"columnName\":\"user_Name\",\"isWhere\":true},{\"columnName\":\"password\",\"isWhere\":false},{\"columnName\":\"pro_Code\",\"isWhere\":false}]}";
-//        String insert = coreServer.serach(str);
-//        FileUtil.saveToFile(projectPath,"hello.xml",insert,true);
-//        System.out.println(insert);
+
+        String context = "<!-- 测试查询解析器 -->\r" +
+                "<select id=\"userList\" parameterType=\"Map\" resultType=\"\">\r" +
+                "    select users.id,users.user_name,users.password,users.email,users.create_time from users\r" +
+                "    <where>\n" +
+                "        users.user_name = #{users.userName}\n" +
+                "    </where>\n" +
+                "    order by users.create_time\n" +
+                "</select>";
+
+        CoreServer coreServer = new CoreServer();
+        coreServer.saveToXml(projectPath,"Hello.xml",context);
+
     }
 }

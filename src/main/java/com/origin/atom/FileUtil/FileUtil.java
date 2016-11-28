@@ -62,8 +62,10 @@ public class FileUtil {
             fis = new FileInputStream(file);
             isr = new InputStreamReader(fis);
             char[] temp = new char[1024];
+            String stemp = null;
             while (isr.read(temp) != -1){
-                fileContent.append(temp);
+                stemp = new String(temp);
+                fileContent.append(stemp);
             }
         }catch (Exception e){
             e.printStackTrace();

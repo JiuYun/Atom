@@ -22,7 +22,7 @@
 %>
 
 <!-- ${fun.comment} -->
-<select id="${fun.funName}" parameterType="Map" resultType="">
+<select id="${fun.funName}" parameterType="Map" resultType="Map">
     select ${colSql} from ${fun.from}
     <where>
         ${sqlWhere}

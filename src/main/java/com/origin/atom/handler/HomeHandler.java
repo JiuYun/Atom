@@ -129,6 +129,14 @@ public class HomeHandler {
             }
             CoreServer coreServer = new CoreServer();
             String resultXml = coreServer.serach(model);
+
+
+
+
+
+
+
+
             jm.setMessage(resultXml);
         }else{
             jm.setMessage("参数错误");
