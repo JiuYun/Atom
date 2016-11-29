@@ -31,7 +31,7 @@ public class FileUtil {
             bf      = new BufferedReader(isr);
             content = new StringBuffer("");
             while ((readLine = bf.readLine()) != null){
-                content.append(readLine);
+                content.append(readLine+"\r");
             }
         }catch (Exception ex){
             ex.printStackTrace();
@@ -183,15 +183,13 @@ public class FileUtil {
 
 
     public static void main(String[] args) throws IOException {
-//        System.out.println(FileUtil.readFileByReader("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
-//        System.out.println("-----------------------------------------------------------------------------------------------");
-//        System.out.println(FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
-//        System.out.println("-----------------------------------------------------------------------------------------------");
-//        System.out.println(FileUtil.readFileByFileInputStream("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
-//        System.out.println("-----------------------------------------------------------------------------------------------");
-//        System.out.println(FileUtil.readFileByFileReader("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
-
-        FileUtil.saveToFile("D:/user/loca","location.txt","这\r是\n一个\r\n文本内容0x61",false);
+        System.out.println(FileUtil.readFileByReader("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
+        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println(FileUtil.readFile("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
+        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println(FileUtil.readFileByFileInputStream("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
+        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println(FileUtil.readFileByFileReader("C:\\Users\\Administrator\\Desktop\\layui-v1.0.3","更新日志.txt"));
 
     }
 

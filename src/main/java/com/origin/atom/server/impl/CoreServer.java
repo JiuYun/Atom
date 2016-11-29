@@ -108,7 +108,7 @@ public class CoreServer {
     public boolean saveToXml(String path,String fileName,String appendContext){
         try {
             if(FileUtil.existsFile(path,fileName)){
-                String fileContext = FileUtil.readFileByReader(path,fileName);
+                String fileContext = FileUtil.readFile(path,fileName);
                 int lastMapperIndex = fileContext.lastIndexOf("</mapper>");
                 String contextQ1 = fileContext.substring(0,lastMapperIndex);
                 String contextQ2 = fileContext.substring(lastMapperIndex);
@@ -132,15 +132,14 @@ public class CoreServer {
     public static void main(String[] args) throws IOException {
         String projectPath = System.getProperty("user.dir")+"\\src\\main\\java\\com\\origin\\atom\\mapping";
 
-        String context = "<!-- 测试查询解析器 -->\r" +
-                "<select id=\"userList\" parameterType=\"Map\" resultType=\"\">\r" +
-                "    select users.id,users.user_name,users.password,users.email,users.create_time from users\r" +
-                "    <where>\n" +
-                "        users.user_name = #{users.userName}\n" +
-                "    </where>\n" +
-                "    order by users.create_time\n" +
-                "</select>";
-
+        String context = "\t<!-- 测试查询解析器 -->\r" +
+                "\t<select id=\"userList\" parameterType=\"Map\" resultType=\"\">\r" +
+                "\t    select users.id,users.user_name,users.password,users.email,users.create_time from users\r" +
+                "\t    <where>\n" +
+                "\t        users.user_name = #{users.userName}\n" +
+                "\t    </where>\n" +
+                "\t    order by users.create_time\n" +
+                "\t</select>";
         CoreServer coreServer = new CoreServer();
         coreServer.saveToXml(projectPath,"Hello.xml",context);
 
