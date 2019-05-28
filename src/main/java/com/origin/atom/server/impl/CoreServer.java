@@ -1,7 +1,6 @@
 package com.origin.atom.server.impl;
 
 
-import com.alibaba.fastjson.JSON;
 import com.generator.me.FromatClassName;
 import com.origin.atom.FileUtil.FileUtil;
 import com.origin.atom.model.SeracheFunModel;
@@ -40,11 +39,12 @@ public class CoreServer {
      * @return
      */
     public String insert(String params){
-        HashMap temp = JSON.parseObject(params,HashMap.class);
-        Template t = gt.getTemplate("/bt/insert.bt");
-        t.binding("columns",temp.get("columns"));
-        t.binding("tableName",temp.get("tableName"));
-        return t.render();
+//        HashMap temp = JSON.parseObject(params,HashMap.class);
+//        Template t = gt.getTemplate("/bt/insert.bt");
+//        t.binding("columns",temp.get("columns"));
+//        t.binding("tableName",temp.get("tableName"));
+//        return t.render();
+        return null;
     }
 
 
@@ -56,11 +56,12 @@ public class CoreServer {
      * @return
      */
     public String update(String params){
-        HashMap temp = JSON.parseObject(params,HashMap.class);
-        Template t = gt.getTemplate("/bt/update.bt");
-        t.binding("columns",temp.get("columns"));
-        t.binding("tableName",temp.get("tableName"));
-        return t.render();
+//        HashMap temp = JSON.parseObject(params,HashMap.class);
+//        Template t = gt.getTemplate("/bt/update.bt");
+//        t.binding("columns",temp.get("columns"));
+//        t.binding("tableName",temp.get("tableName"));
+//        return t.render();
+        return null;
     }
 
 
@@ -72,11 +73,12 @@ public class CoreServer {
      * @return
      */
     public String delete(String params){
-        HashMap temp = JSON.parseObject(params,HashMap.class);
-        Template t = gt.getTemplate("/bt/delete.bt");
-        t.binding("columns",temp.get("columns"));
-        t.binding("tableName",temp.get("tableName"));
-        return t.render();
+//        HashMap temp = JSON.parseObject(params,HashMap.class);
+//        Template t = gt.getTemplate("/bt/delete.bt");
+//        t.binding("columns",temp.get("columns"));
+//        t.binding("tableName",temp.get("tableName"));
+//        return t.render();
+        return null;
     }
 
 

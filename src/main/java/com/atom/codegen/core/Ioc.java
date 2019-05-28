@@ -1,4 +1,4 @@
-package com.qiandu.Generator.core;
+package com.atom.codegen.core;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -28,13 +28,8 @@ public final class Ioc implements Serializable{
      * @param object
      */
     public static void addBean(String key,Object object){
-        System.out.println("添加:"+key);
-        if (getBean(key) != null) {
-            try {
-                throw new Exception();
-            } catch (Exception e) {
-                System.out.println("警告！元素已存在");
-            }
+        if(map.containsKey(key)){
+            throw new RuntimeException("%s重复添加");
         }else{
             map.put(key, object);
         }
@@ -47,17 +42,12 @@ public final class Ioc implements Serializable{
      * @return
      */
     public static Object getBean(String key){
-        System.out.println("获取:"+key);
         Object object = map.get(key);
         if (object == null) {
-            try {
-                throw new Exception();
-            } catch (Exception e) {
-                System.out.println("警告！没有"+key+"对象");
-            }
+            throw new NullPointerException(String.format("%s不存在",key));
         }
         return object;
-    };
+    }
 
 
 
