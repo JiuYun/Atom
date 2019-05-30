@@ -1,7 +1,7 @@
 package com.origin.atom.server.impl;
 
 
-import com.generator.me.FromatClassName;
+import com.generator.me.FormatClassName;
 import com.origin.atom.FileUtil.FileUtil;
 import com.origin.atom.model.SeracheFunModel;
 import org.beetl.core.Configuration;
@@ -10,7 +10,6 @@ import org.beetl.core.Template;
 import org.beetl.core.resource.ClasspathResourceLoader;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 /***
  *
@@ -27,7 +26,7 @@ public class CoreServer {
         resourceLoader  = new ClasspathResourceLoader();
         cfg             = Configuration.defaultConfiguration();
         gt              = new GroupTemplate(resourceLoader, cfg);
-        gt.registerFunctionPackage("MeFunction",FromatClassName.class);
+        gt.registerFunctionPackage("MeFunction",FormatClassName.class);
     }
 
 

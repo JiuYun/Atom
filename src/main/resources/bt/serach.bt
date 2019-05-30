@@ -10,8 +10,8 @@
 
     firstFor = true;
     for(column in fun.where){
-        if(firstFor){firstFor = false;sqlWhere = column + " = #{" +MeFunction.fromatColumnName(column)+"}" ;continue;}
-        sqlWhere = sqlWhere + "," + column + " = #{" +MeFunction.fromatColumnName(column)+"}" ;
+        if(firstFor){firstFor = false;sqlWhere = column + " = #{" +MeFunction.formatColumnName(column)+"}" ;continue;}
+        sqlWhere = sqlWhere + "," + column + " = #{" +MeFunction.formatColumnName(column)+"}" ;
     }
 
     firstFor = true;

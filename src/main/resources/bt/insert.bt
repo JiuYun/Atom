@@ -1,18 +1,12 @@
-<%
-	var s_columns = "";			//数据库表名
-	var s_params  = "";			//params参数名
-	var firstFor = true;
-	for(column in columns){
-		if(firstFor){
-			firstFor 	= false;
-			s_columns   = s_columns + column.columnName;
-			s_params	= s_params + "#{"+MeFunction.fromatColumnName(column.columnName)+"}";
-		}else{
-			s_columns 	= s_columns + ","+column.columnName ;
-			s_params	= s_params + ",#{"+MeFunction.fromatColumnName(column.columnName)+"}";
-		}
-	}
-%>
-<insert id="save${MeFunction.fromatClassName(tableName)}" parameterType="Map">
-	insert into ${tableName}(${s_columns}) value(${s_params})
+
+<insert id = "insert" parameterType="${packageInfo}.entity.${MeFunction.formatClassName(table.name)}">
+    insert into ${table.name}(
+    <% for(column in table.column){ %>
+        ${column.columnName}${!columnLP.last ? ','}
+    <% } %>
+    )values(
+    <% for(column in table.column){ %>
+        #(${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${column.dataType})${!columnLP.last ? ','}
+    <% } %>
+    )
 </insert>

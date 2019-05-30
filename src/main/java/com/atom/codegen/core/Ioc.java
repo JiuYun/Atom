@@ -29,7 +29,7 @@ public final class Ioc implements Serializable{
      */
     public static void addBean(String key,Object object){
         if(map.containsKey(key)){
-            throw new RuntimeException("%s重复添加");
+            throw new RuntimeException(String.format("%s重复添加",key));
         }else{
             map.put(key, object);
         }

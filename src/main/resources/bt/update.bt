@@ -5,14 +5,14 @@
     for(column in columns){
         if(firstFor){
            firstFor = false;
-           setSql = "set " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           setSql = "set " + column.columnName + " = #{"+MeFunction.formatColumnName(column.columnName)+"}";
            if(column.isWhere){
-                sqlWhere = sqlWhere + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+                sqlWhere = sqlWhere + column.columnName + " = #{"+MeFunction.formatColumnName(column.columnName)+"}";
            }
         }else{
-           setSql = setSql + ", " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+           setSql = setSql + ", " + column.columnName + " = #{"+MeFunction.formatColumnName(column.columnName)+"}";
            if(column.isWhere){
-                sqlWhere = sqlWhere +" and " + column.columnName + " = #{"+MeFunction.fromatColumnName(column.columnName)+"}";
+                sqlWhere = sqlWhere +" and " + column.columnName + " = #{"+MeFunction.formatColumnName(column.columnName)+"}";
            }
         }
     }

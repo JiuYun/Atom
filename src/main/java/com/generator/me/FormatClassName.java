@@ -7,7 +7,7 @@ import org.beetl.core.Function;
 /**
  * Created by Administrator on 2016/9/20 0020.
  */
-public class FromatClassName{
+public class FormatClassName{
 
 
     /***
@@ -15,7 +15,7 @@ public class FromatClassName{
      * @param tableName
      * @return
      */
-    public String fromatClassName(String tableName){
+    public String formatClassName(String tableName){
         if(tableName != null && tableName.trim().length() == 0){return "";}
         if(tableName.indexOf("_") != -1){
             String[] array = tableName.split("_");
@@ -33,7 +33,7 @@ public class FromatClassName{
      * @param columnName
      * @return
      */
-    public String fromatColumnName(String columnName){
+    public String formatColumnName(String columnName){
         if(columnName != null && columnName.trim().length() == 0){return "";}
         if(columnName.indexOf("_") != -1){
             String[] array = columnName.split("_");

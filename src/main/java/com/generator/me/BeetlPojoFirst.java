@@ -38,7 +38,7 @@ public class BeetlPojoFirst {
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
         Configuration cfg = Configuration.defaultConfiguration();
         GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
-        gt.registerFunctionPackage("MeFunction",FromatClassName.class);
+        gt.registerFunctionPackage("MeFunction",FormatClassName.class);
         Template t = gt.getTemplate("/JavaPojo.bt");
         t.binding("className",tableModel.getName());
         t.binding("columns",tableModel.getColumn());

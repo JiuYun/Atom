@@ -9,14 +9,18 @@ public class TableModel {
 
     private Set<ColumnModel> column;                        //  列的集合
 
-    private String notes;                                   // 描述
+    private Set<ColumnModel> pk;                            //  主键
+
+    private String notes;                                   //  描述
 
     public TableModel() {
     }
 
-    public TableModel(String name, Set<ColumnModel> column) {
+    public TableModel(String name, Set<ColumnModel> column,Set<ColumnModel> pk, String notes) {
         this.name = name;
         this.column = column;
+        this.pk = pk;
+        this.notes = notes;
     }
 
     public String getName() {
@@ -41,6 +45,14 @@ public class TableModel {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Set<ColumnModel> getPk() {
+        return pk;
+    }
+
+    public void setPk(Set<ColumnModel> pk) {
+        this.pk = pk;
     }
 
     @Override

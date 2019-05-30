@@ -1,0 +1,12 @@
+
+    <update id = "updateByPrimaryKeySelective" parameterType = "${packageInfo}.entity.${MeFunction.formatClassName(table.name)}">
+         update ${table.name}
+         <set>
+            <% for(column in table.column) { %>
+            <if test = "${MeFunction.formatColumnName(column.columnName)} != null">
+                ${column.columnName} = #{${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${column.dataType}},
+            </if>
+            <% } %>
+         </set>
+         where<% for(column in table.pk){ %> ${!columnLP.first ? ' and '}${column.columnName} = #{${MeFunction.formatColumnName(column.columnName)},jdbcType = ${column.dataType}} <% } %>
+    </update>

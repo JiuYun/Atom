@@ -5,23 +5,22 @@ import java.util.Set;
 
 /****
  * 数据库表模型
- * @author Chuang
- *	不为别的只为以后的开发方便
  */
 public class TableModel {
 
-    private String name;//表名
+    private String name;                    //  表名
 
-    private Set<ColumnModel> column;//列的集合
+    private Set<ColumnModel> column;        //  列的集合
+
+    private String  notes;                  //  描述
 
     public TableModel() {
-        // TODO Auto-generated constructor stub
     }
 
-    public TableModel(String name, Set<ColumnModel> column) {
-        super();
+    public TableModel(String name, Set<ColumnModel> column, String notes) {
         this.name = name;
         this.column = column;
+        this.notes = notes;
     }
 
     public String getName() {
@@ -38,6 +37,14 @@ public class TableModel {
 
     public void setColumn(Set<ColumnModel> column) {
         this.column = column;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override

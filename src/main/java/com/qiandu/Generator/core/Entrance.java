@@ -4,14 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Scanner;
 
-import com.generator.me.FromatClassName;
+import com.generator.me.FormatClassName;
 import com.qiandu.Generator.Model.ColumnModel;
 import com.qiandu.Generator.Model.TableModel;
 import org.beetl.core.Configuration;
@@ -82,7 +79,7 @@ public class Entrance {
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
         Configuration cfg = Configuration.defaultConfiguration();
         GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
-        gt.registerFunctionPackage("MeFunction",FromatClassName.class);
+        gt.registerFunctionPackage("MeFunction",FormatClassName.class);
         Template t = gt.getTemplate("/JavaPojo.bt");
 
         for (String key : tableMap.keySet()) {

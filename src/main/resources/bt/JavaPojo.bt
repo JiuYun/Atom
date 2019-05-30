@@ -9,16 +9,16 @@ ${MeFunction.dataTypeToImport(column.dataType)}
 public class ${MeFunction.fromatClassName(className)}{
 
     <%for(column in columns){%>
-        private ${MeFunction.dataTypeToJavaType(column.dataType)} ${MeFunction.fromatColumnName(column.columnName)};
+        private ${MeFunction.dataTypeToJavaType(column.dataType)} ${MeFunction.formatColumnName(column.columnName)};
     <%}%>
 
     <%for(column in columns){%>
 
         public ${MeFunction.dataTypeToJavaType(column.dataType)} get${MeFunction.fromatClassName(column.columnName)}(){
-            return this.${MeFunction.fromatColumnName(column.columnName)};
+            return this.${MeFunction.formatColumnName(column.columnName)};
         }
-        public void set${MeFunction.fromatClassName(column.columnName)}(${MeFunction.dataTypeToJavaType(column.dataType)} ${MeFunction.fromatColumnName(column.columnName)}){
-            this.${MeFunction.fromatColumnName(column.columnName)} = ${MeFunction.fromatColumnName(column.columnName)};
+        public void set${MeFunction.fromatClassName(column.columnName)}(${MeFunction.dataTypeToJavaType(column.dataType)} ${MeFunction.formatColumnName(column.columnName)}){
+            this.${MeFunction.formatColumnName(column.columnName)} = ${MeFunction.formatColumnName(column.columnName)};
         }
     <%}%>
 }
