@@ -1,0 +1,33 @@
+package ${packageInfo}.mapper;
+
+<%for(column in columns){%>
+<%if(MeFunction.dataTypeToImport(column.dataType) != ""){%>
+${MeFunction.dataTypeToImport(column.dataType)}
+<%}%>
+<%}%>
+import ${packageInfo}.entity.${MeFunction.formatClassName(table.name)};
+import org.apache.ibatis.annotations.Param;
+
+/***
+ * 当然这不是最终的样子 Mapper也是
+ *
+ */
+public interface ${MeFunction.formatClassName(table.name)}Mapper {
+
+
+    public int insert(${MeFunction.formatClassName(table.name)} record);
+
+    public int insertSelective(${MeFunction.formatClassName(table.name)} record);
+
+    public int updateByPrimaryKey(${MeFunction.formatClassName(table.name)} record);
+
+    public int updateByPrimaryKeySelective(${MeFunction.formatClassName(table.name)} record);
+
+    public int deleteByPrimaryKey(<% for(col in table.pk) {%>${col.dataType} ${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ", "}<%}%>);
+
+
+
+
+
+
+}

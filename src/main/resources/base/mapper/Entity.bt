@@ -1,0 +1,32 @@
+package ${packageInfo}.entity;
+
+<%for(column in columns){%>
+    <%if(MeFunction.dataTypeToImport(column.dataType) != ""){%>
+${MeFunction.dataTypeToImport(column.dataType)}
+   <%}%>
+<%}%>
+
+/***
+ * ${table.notes}.
+ *
+ */
+public class ${MeFunction.formatClassName(className)}{
+
+    <%for(column in columns){%>
+    ${(column.notes != null && column.notes != '') ? '/** ' + column.notes +  ' **/'}
+    private ${MeFunction.dataTypeToJavaType(column.dataType)} ${MeFunction.formatColumnName(column.columnName)};
+    <%}%>
+
+
+    public ${MeFunction.formatClassName(className)}() {}
+
+    <%for(column in columns){%>
+
+    public ${MeFunction.dataTypeToJavaType(column.dataType)} get${MeFunction.formatClassName(column.columnName)}(){
+        return this.${MeFunction.formatColumnName(column.columnName)};
+    }
+    public void set${MeFunction.formatClassName(column.columnName)}(${MeFunction.dataTypeToJavaType(column.dataType)} ${MeFunction.formatColumnName(column.columnName)}){
+        this.${MeFunction.formatColumnName(column.columnName)} = ${MeFunction.formatColumnName(column.columnName)};
+    }
+    <%}%>
+}

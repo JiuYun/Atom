@@ -1,0 +1,22 @@
+package ${packageInfo}.service;
+
+import ${packageInfo}.entity.${MeFunction.formatClassName(table.name)};
+
+public interface ${MeFunction.formatClassName(table.name)}Service{
+
+    public int save${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+
+    public int saveSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+
+    public int update${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+
+    public int updateSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+
+    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${col.dataType} ${col.columnName}${!colLP.last ? ', '}<% } %>)
+
+
+
+
+
+
+}

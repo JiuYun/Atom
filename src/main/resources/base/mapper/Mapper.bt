@@ -6,12 +6,14 @@
 
 <% include("../tpl/Base_Column_List.bt"){} %>
 
-<% include("../tpl/insert.bt"){} %>
+<% include("../tpl/Insert.bt"){} %>
 
-<% include("../tpl/insertSelective.bt"){} %>
+<% include("../tpl/InsertSelective.bt"){} %>
 
-<% include("../tpl/updateByPrimaryKey.bt"){} %>
+<% include("../tpl/UpdateByPrimaryKey.bt"){} %>
 
-<% include("../tpl/updateByPrimaryKeySelective.bt"){} %>
+<% include("../tpl/UpdateByPrimaryKeySelective.bt"){} %>
+
+<% include("../tpl/DeleteByPrimaryKey.bt"){} %>
 
 </mapper>

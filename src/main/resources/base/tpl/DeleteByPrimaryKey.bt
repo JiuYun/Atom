@@ -1,0 +1,4 @@
+
+    <delete id = "deleteByPrimaryKey">
+        delete from ${table.name} where<% for(c in table.pk){ %>${!cLP.first ? ' and'} ${c.columnName} = #{${MeFunction.formatColumnName(c.columnName)}} <% } %>
+    </delete>

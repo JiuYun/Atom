@@ -1,0 +1,38 @@
+package ${packageInfo}.service.impl;
+
+import ${packageInfo}.entity.${MeFunction.formatClassName(table.name)};
+import ${packageInfo}.mapper.${MeFunction.formatClassName(table.name)}Mapper;
+import ${packageInfo}.service.${MeFunction.formatClassName(table.name)}Service;
+
+@Service
+public class ${MeFunction.formatClassName(table.name)}ServiceImpl implements ${MeFunction.formatClassName(table.name)}Service{
+
+    @Resource
+    private ${MeFunction.formatClassName(table.name)}Mapper ${MeFunction.formatColumnName(table.name)}Mapper;
+
+    public int save${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
+        return ${MeFunction.formatColumnName(table.name)}Mapper.insert(${MeFunction.formatColumnName(table.name)});
+    }
+
+    public int saveSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
+        return ${MeFunction.formatColumnName(table.name)}Mapper.insertSelective(${MeFunction.formatColumnName(table.name)});
+    }
+
+    public int update${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
+        return ${MeFunction.formatColumnName(table.name)}Mapper.updateByPrimaryKey(${MeFunction.formatColumnName(table.name)});
+    }
+
+    public int updateSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
+        return ${MeFunction.formatColumnName(table.name)}Mapper.updateByPrimaryKeySelective(${MeFunction.formatColumnName(table.name)})
+    }
+
+    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${col.dataType} ${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ', '}<% } %>){
+        return ${MeFunction.formatColumnName(table.name)}Mapper.deleteByPrimaryKey(<% for(col in table.pk) { %>${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ', '}<% } %>);
+    }
+
+
+
+
+
+
+}
