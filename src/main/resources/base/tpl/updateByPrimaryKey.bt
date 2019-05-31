@@ -5,5 +5,5 @@
             <% for(column in table.column) { %>
             ${column.columnName} = #{${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${column.dataType}}${!columnLP.last ? ','}
             <% } %>
-         where<% for(column in table.pk){ %> ${!columnLP.first ? ' and '}${column.columnName} = #{${MeFunction.formatColumnName(column.columnName)},jdbcType = ${column.dataType}} <% } %>
+        where<% for(column in table.pk){ %> ${!columnLP.first ? ' and '}${column.columnName} = #{${MeFunction.formatColumnName(column.columnName)},jdbcType = ${column.dataType}} <% } %>
     </update>

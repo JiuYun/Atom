@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${packageInfo}.mapper.${MeFunction.formatClassName(table.name)}Mapper">
+
+<% include("../tpl/BaseResultMap.bt"){} %>
+
+<% include("../tpl/Base_Column_List.bt"){} %>
+
+<% include("../tpl/insert.bt"){} %>
+
+<% include("../tpl/insertSelective.bt"){} %>
+
+<% include("../tpl/updateByPrimaryKey.bt"){} %>
+
+<% include("../tpl/updateByPrimaryKeySelective.bt"){} %>
+
+</mapper>

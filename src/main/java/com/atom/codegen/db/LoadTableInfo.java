@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 
 /***
@@ -29,8 +29,8 @@ public class LoadTableInfo {
         ResultSet   tableResultSet  = statement.executeQuery(String.format(showTableTpl,dataSourceConfig.getSchema()));
         while (tableResultSet.next()){
             tableMap.put(tableResultSet.getString(2) ,
-                    new TableModel(tableResultSet.getString(2),new HashSet<ColumnModel>(),
-                            new HashSet<ColumnModel>(),
+                    new TableModel(tableResultSet.getString(2),new LinkedList<ColumnModel>(),
+                            new LinkedList<ColumnModel>(),
                             tableResultSet.getString(3)));
         }
 

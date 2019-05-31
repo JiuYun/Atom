@@ -47,7 +47,7 @@ public class Entrance {
         Configuration cfg = Configuration.defaultConfiguration();
         GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
         gt.registerFunctionPackage("MeFunction",FormatClassName.class);
-        Template t = gt.getTemplate("/base/tpl/updateByPrimaryKeySelective.bt");
+        Template t = gt.getTemplate("/base/mapper/Mapper.bt");
 
         Map<String,TableModel> tableMap = (Map<String, TableModel>) Ioc.getBean("tableMap");
         for (String key : tableMap.keySet()) {

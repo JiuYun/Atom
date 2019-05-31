@@ -1,0 +1,4 @@
+
+    <sql id = "Base_Column_List">
+        <% for(col in table.column){ %>${col.columnName}${!colLP.last ? ','}<% } %>
+    </sql>

@@ -14,7 +14,7 @@ public class ColumnModel implements Serializable{
 
     private boolean isnull;                     // 是否能为空
 
-    private boolean isPk;                       // 是否是主键
+    private boolean pk;                         // 是否是主键
 
     private String notes;                       // 注释说明
 
@@ -24,15 +24,13 @@ public class ColumnModel implements Serializable{
     }
 
 
-    public ColumnModel(String columnName, String dataType, boolean isnull,
-                       boolean isPk, String notes) {
+    public ColumnModel(String columnName, String dataType, boolean isnull, boolean pk, String notes) {
         this.columnName = columnName;
         this.dataType = dataType;
         this.isnull = isnull;
-        this.isPk = isPk;
+        this.pk = pk;
         this.notes = notes;
     }
-
 
     public String getColumnName() {
         return columnName;
@@ -65,14 +63,12 @@ public class ColumnModel implements Serializable{
 
 
     public boolean isPk() {
-        return isPk;
+        return pk;
     }
 
-
-    public void setPk(boolean isPk) {
-        this.isPk = isPk;
+    public void setPk(boolean pk) {
+        this.pk = pk;
     }
-
 
     public String getNotes() {
         return notes;
@@ -87,7 +83,7 @@ public class ColumnModel implements Serializable{
     @Override
     public String toString() {
         return "ColumnModel [columnName=" + columnName + ", \tdataType="
-                + dataType + ", \tisnull=" + isnull + ", \tisPk=" + isPk
+                + dataType + ", \tisnull=" + isnull + ", \tpk=" + pk
                 + ", \tnotes=" + notes + "]\r";
     }
 
