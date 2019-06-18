@@ -6,11 +6,8 @@ import java.util.List;
 public class TableModel {
 
     private String name;                                        //  表名
-
     private List<ColumnModel> column;                           //  列的集合
-
     private List<ColumnModel> pk;                               //  主键
-
     private String notes;                                       //  描述
 
     public TableModel() {

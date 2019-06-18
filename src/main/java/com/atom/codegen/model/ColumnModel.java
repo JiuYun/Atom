@@ -9,13 +9,9 @@ public class ColumnModel implements Serializable{
     private static final long serialVersionUID = 1817142740849358516L;
 
     private String columnName;                  // 列名
-
     private String dataType;                    // 数据类型
-
     private boolean isnull;                     // 是否能为空
-
     private boolean pk;                         // 是否是主键
-
     private String notes;                       // 注释说明
 
 
