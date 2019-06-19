@@ -26,7 +26,7 @@ public class Console {
      * @param primarySource
      * @param args
      */
-    public static void run(Class<?> primarySource, String args){
+    public static void run(Class<?> primarySource, String[] args){
         Start start = null;
         try {
             start = (Start) primarySource.newInstance();

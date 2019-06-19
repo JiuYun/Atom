@@ -1,6 +1,6 @@
-package ${packageInfo}.service;
+package ${servicePackage};
 
-import ${packageInfo}.entity.${MeFunction.formatClassName(table.name)};
+import ${entityPackage}.${MeFunction.formatClassName(table.name)};
 
 public interface ${MeFunction.formatClassName(table.name)}Service{
 

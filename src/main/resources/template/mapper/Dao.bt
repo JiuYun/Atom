@@ -1,11 +1,11 @@
-package ${packageInfo}.mapper;
+package ${daoPackage};
 
 <%for(column in columns){%>
 <%if(MeFunction.dataTypeToImport(column.dataType) != ""){%>
 ${MeFunction.dataTypeToImport(column.dataType)}
 <%}%>
 <%}%>
-import ${packageInfo}.entity.${MeFunction.formatClassName(table.name)};
+import ${entityPackage}.${MeFunction.formatClassName(table.name)};
 import org.apache.ibatis.annotations.Param;
 
 /***

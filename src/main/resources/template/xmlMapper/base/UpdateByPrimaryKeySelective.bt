@@ -1,5 +1,5 @@
 
-    <update id = "updateByPrimaryKeySelective" parameterType = "${packageInfo}.entity.${MeFunction.formatClassName(table.name)}">
+    <update id = "updateByPrimaryKeySelective" parameterType = "${entityPackage}.${MeFunction.formatClassName(table.name)}">
         update ${table.name}
         <set>
         <% for(column in table.column) { %>

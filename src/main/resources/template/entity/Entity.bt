@@ -1,4 +1,4 @@
-package ${packageInfo}.entity;
+package ${entityPackage};
 
 <%for(column in columns){%>
     <%if(MeFunction.dataTypeToImport(column.dataType) != ""){%>

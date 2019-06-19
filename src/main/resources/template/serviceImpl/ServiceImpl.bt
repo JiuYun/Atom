@@ -1,8 +1,8 @@
-package ${packageInfo}.service.impl;
+package ${servicePackage};
 
-import ${packageInfo}.entity.${MeFunction.formatClassName(table.name)};
-import ${packageInfo}.mapper.${MeFunction.formatClassName(table.name)}Mapper;
-import ${packageInfo}.service.${MeFunction.formatClassName(table.name)}Service;
+import ${entityPackage}.${MeFunction.formatClassName(table.name)};
+import ${daoPackage}.${MeFunction.formatClassName(table.name)}Mapper;
+import ${serviceImplPackage}.${MeFunction.formatClassName(table.name)}Service;
 
 @Service
 public class ${MeFunction.formatClassName(table.name)}ServiceImpl implements ${MeFunction.formatClassName(table.name)}Service{

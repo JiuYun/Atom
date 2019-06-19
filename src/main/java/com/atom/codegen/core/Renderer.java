@@ -1,5 +1,6 @@
 package com.atom.codegen.core;
 
+import com.atom.codegen.config.PackageConfig;
 import com.atom.codegen.model.Component;
 import com.atom.codegen.model.TableModel;
 import com.generator.me.FormatClassName;
@@ -50,7 +51,14 @@ public class Renderer {
         t.binding("table",model);
         t.binding("className",model.getName());
         t.binding("columns",model.getColumn());
-        t.binding("packageInfo","com.qianyun.core");
+
+        PackageConfig pConfig = (PackageConfig) Ioc.getBean("packageConfig");
+        t.binding("controllerPackage",pConfig.getControllerPackageName());
+        t.binding("daoPackage",pConfig.getDaoPackageName());
+        t.binding("entityPackage",pConfig.getEntityPackageName());
+        t.binding("servicePackage",pConfig.getServicePackageImplName());
+        t.binding("serviceImplPackage",pConfig.getServicePackageImplName());
+
         String str      = t.render();
         String filePath = String.format(component.getOutFilePath(),fcn.formatClassName(model.getName()));
         String fileName = filePath.substring(filePath.lastIndexOf("\\") + 1);
