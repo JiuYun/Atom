@@ -8,11 +8,13 @@ import java.util.List;
 
 /***
  *
+ * @author jion
  */
 public class Gen implements Command {
 
     private Renderer renderer = Renderer.getInstance();
 
+    @Override
     public void execute(String[] args) {
         String operate      = args.length == 2 ? args[1] : args[2];
         String tableName    = args.length == 2 ? null : args[1];

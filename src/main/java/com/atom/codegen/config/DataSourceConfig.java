@@ -1,15 +1,42 @@
 package com.atom.codegen.config;
 
+/**
+ * @author jion
+ */
 public class DataSourceConfig {
 
+    /***
+     * 驱动名称
+      */
+    private String driver;
+    /**
+     * 数据库地址
+     */
+    private String url;
+    /**
+     * 数据库用户名
+     */
+    private String userName;
 
-    private String driver;              // 驱动名称
-    private String url;                 // 数据库地址
-    private String userName;            // 数据库用户名
-    private String password;            // 数据库密码
-    private String schema;              // 所选库
-    private String name;                // 数据库源名字
-    private String dataType;            // 数据库类型
+    /***
+     * 数据库密码
+     */
+    private String password;
+
+    /***
+     * 所选库
+     */
+    private String schema;
+
+    /***
+     * 数据库源名字
+     */
+    private String name;
+
+    /***
+     * 数据库类型
+     */
+    private String dataType;
 
     public String getDriver() {
         return driver;

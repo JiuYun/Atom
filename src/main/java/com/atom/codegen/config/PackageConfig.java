@@ -3,6 +3,7 @@ package com.atom.codegen.config;
 /****
  * 生成文件包名
  *
+ * @author jion
  */
 public class PackageConfig {
 
