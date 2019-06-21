@@ -6,7 +6,7 @@
         <% } %>
         )values(
         <% for(column in table.column){ %>
-            #(${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${column.dataType})${!columnLP.last ? ','}
+            #(${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${MeFunction.dateTypeToJDBCType(column.dataType)})${!columnLP.last ? ','}
         <% } %>
         )
     </insert>

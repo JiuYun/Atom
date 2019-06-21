@@ -12,7 +12,7 @@ public interface ${MeFunction.formatClassName(table.name)}Service{
 
     public int updateSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
 
-    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${col.dataType} ${col.columnName}${!colLP.last ? ', '}<% } %>)
+    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${MeFunction.dataTypeToJavaType(col.dataType)} ${col.columnName}${!colLP.last ? ', '}<% } %>);
 
 
 

@@ -11,7 +11,7 @@
         <trim prefix = "values (" suffix = ")" suffixOverrides = ",">
         <% for(column in table.column) { %>
             <if test = "${column.columnName} != null">
-                #(${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${column.dataType})
+                #(${MeFunction.formatColumnName(column.columnName)}, jdbcType = ${MeFunction.dateTypeToJDBCType(column.dataType)})
             </if>
         <% } %>
         </trim>

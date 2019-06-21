@@ -1,8 +1,8 @@
 package com.generator.me;
 
+
+import com.atom.codegen.config.MysqlDataType;
 import com.qiandu.Generator.constant.Constant;
-import org.beetl.core.Context;
-import org.beetl.core.Function;
 
 /**
  * Created by Administrator on 2016/9/20 0020.
@@ -54,6 +54,19 @@ public class FormatClassName{
     }
 
 
+    /***
+     * 数据库类型转换为JDBC数据类型
+     *
+     * @param dataType
+     * @return
+     */
+    public String dateTypeToJDBCType(String dataType){
+        if("int".equalsIgnoreCase(dataType)){
+            return "INTEGER";
+        }
+        return dataType.toUpperCase();
+    }
+
     /****
      * 数据库数据类型转换为Java数据类型
      * 如果无法识别则转换为Object
@@ -61,9 +74,12 @@ public class FormatClassName{
      * @return
      */
     public String dataTypeToJavaType(String dataType){
-        if(dataType == null || dataType.trim().length() == 0){return "";}
-        String type = Constant.DataTypeToJavaType(dataType);
-        if(type != null){return type;}
+        MysqlDataType[] types = MysqlDataType.values();
+        for(MysqlDataType type : types){
+            if(dataType.equalsIgnoreCase(type.name())){
+                return type.getJavaType();
+            }
+        }
         return "Object";
     }
 

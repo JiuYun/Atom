@@ -1,6 +1,6 @@
 
     <resultMap id="BaseResultMap" type="${entityPackage}.${MeFunction.formatClassName(table.name)}">
         <% for(col in table.column) { %>
-        <${col.pk ? 'id' : 'result'} column="${col.columnName}" jdbcType="${col.dataType}" property="${MeFunction.formatColumnName(col.columnName)}" />
+        <${col.pk ? 'id' : 'result'} column="${col.columnName}" jdbcType="${MeFunction.dateTypeToJDBCType(col.dataType)}" property="${MeFunction.formatColumnName(col.columnName)}" />
         <% } %>
     </resultMap>

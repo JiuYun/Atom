@@ -1,8 +1,8 @@
-package ${servicePackage};
+package ${serviceImplPackage};
 
 import ${entityPackage}.${MeFunction.formatClassName(table.name)};
 import ${daoPackage}.${MeFunction.formatClassName(table.name)}Mapper;
-import ${serviceImplPackage}.${MeFunction.formatClassName(table.name)}Service;
+import ${servicePackage}.${MeFunction.formatClassName(table.name)}Service;
 
 @Service
 public class ${MeFunction.formatClassName(table.name)}ServiceImpl implements ${MeFunction.formatClassName(table.name)}Service{
@@ -10,23 +10,28 @@ public class ${MeFunction.formatClassName(table.name)}ServiceImpl implements ${M
     @Resource
     private ${MeFunction.formatClassName(table.name)}Mapper ${MeFunction.formatColumnName(table.name)}Mapper;
 
+    @Override
     public int save${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
         return ${MeFunction.formatColumnName(table.name)}Mapper.insert(${MeFunction.formatColumnName(table.name)});
     }
 
+    @Override
     public int saveSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
         return ${MeFunction.formatColumnName(table.name)}Mapper.insertSelective(${MeFunction.formatColumnName(table.name)});
     }
 
+    @Override
     public int update${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
         return ${MeFunction.formatColumnName(table.name)}Mapper.updateByPrimaryKey(${MeFunction.formatColumnName(table.name)});
     }
 
+    @Override
     public int updateSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} ${MeFunction.formatColumnName(table.name)}){
-        return ${MeFunction.formatColumnName(table.name)}Mapper.updateByPrimaryKeySelective(${MeFunction.formatColumnName(table.name)})
+        return ${MeFunction.formatColumnName(table.name)}Mapper.updateByPrimaryKeySelective(${MeFunction.formatColumnName(table.name)});
     }
 
-    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${col.dataType} ${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ', '}<% } %>){
+    @Override
+    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${MeFunction.dataTypeToJavaType(col.dataType)} ${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ', '}<% } %>){
         return ${MeFunction.formatColumnName(table.name)}Mapper.deleteByPrimaryKey(<% for(col in table.pk) { %>${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ', '}<% } %>);
     }
 

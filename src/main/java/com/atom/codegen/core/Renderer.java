@@ -56,7 +56,7 @@ public class Renderer {
         t.binding("controllerPackage",pConfig.getControllerPackageName());
         t.binding("daoPackage",pConfig.getDaoPackageName());
         t.binding("entityPackage",pConfig.getEntityPackageName());
-        t.binding("servicePackage",pConfig.getServicePackageImplName());
+        t.binding("servicePackage",pConfig.getServicePackageName());
         t.binding("serviceImplPackage",pConfig.getServicePackageImplName());
 
         String str      = t.render();

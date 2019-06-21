@@ -1,10 +1,13 @@
 package com.atom.codegen.command;
 
+import com.alibaba.fastjson.JSONObject;
 import com.atom.codegen.core.Ioc;
 import com.atom.codegen.core.Renderer;
 import com.atom.codegen.model.Component;
+import com.atom.codegen.model.TableModel;
 
 import java.util.List;
+import java.util.Map;
 
 /***
  *
@@ -44,6 +47,11 @@ public class Gen implements Command {
 
 
                 System.out.println("生成删除相关的代码");
+                break;
+            case "show":
+                Map<String,TableModel>  tableMap    = (Map<String, TableModel>) Ioc.getBean("tableMap");
+                TableModel              models      = tableMap.get(tableName);
+                System.out.println("tableInfo : " + JSONObject.toJSONString(models));
                 break;
             default:
                 System.out.println("不支持的方式");
