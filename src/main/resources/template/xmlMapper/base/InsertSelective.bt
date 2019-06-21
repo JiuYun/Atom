@@ -1,5 +1,8 @@
 
     <insert id = "insertSelective" parameterType="${entityPackage}.${MeFunction.formatClassName(table.name)}">
+        <selectKey keyProperty="${MeFunction.formatColumnName(table.pk[0].columnName)}" order="AFTER" resultType="${MeFunction.dataTypeToJavaType(table.pk[0].dataType)}">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into ${table.name}
         <trim prefix = "(" suffix = ")" suffixOverrides = ",">
         <% for(column in table.column) { %>

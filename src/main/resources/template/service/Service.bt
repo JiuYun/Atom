@@ -4,17 +4,17 @@ import ${entityPackage}.${MeFunction.formatClassName(table.name)};
 
 public interface ${MeFunction.formatClassName(table.name)}Service{
 
-    public int save${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+    public int save(${MeFunction.formatClassName(table.name)} record);
 
-    public int saveSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+    public int saveSelective(${MeFunction.formatClassName(table.name)} record);
 
-    public int update${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+    public int update(${MeFunction.formatClassName(table.name)} record);
 
-    public int updateSelective${MeFunction.formatClassName(table.name)}(${MeFunction.formatClassName(table.name)} record);
+    public int updateSelective(${MeFunction.formatClassName(table.name)} record);
 
-    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${MeFunction.dataTypeToJavaType(col.dataType)} ${col.columnName}${!colLP.last ? ', '}<% } %>);
+    public int deleteByPrimaryKey(<% for(col in table.pk) { %>${MeFunction.dataTypeToJavaType(col.dataType)} ${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ', '}<% } %>);
 
-
+    public ${MeFunction.formatClassName(table.name)} findById(${MeFunction.dataTypeToJavaType(table.pk[0].dataType)} ${MeFunction.formatColumnName(table.pk[0].columnName)});
 
 
 

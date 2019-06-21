@@ -25,7 +25,7 @@ public interface ${MeFunction.formatClassName(table.name)}Mapper {
 
     public int deleteByPrimaryKey(<% for(col in table.pk) {%>${MeFunction.dataTypeToJavaType(col.dataType)} ${MeFunction.formatColumnName(col.columnName)}${!colLP.last ? ", "}<%}%>);
 
-
+    public ${MeFunction.formatClassName(table.name)} selectByPrimaryKey(${MeFunction.dataTypeToJavaType(table.pk[0].dataType)} ${MeFunction.formatColumnName(table.pk[0].columnName)});
 
 
 

@@ -16,4 +16,6 @@
 
 <% include("base/DeleteByPrimaryKey.bt"){} %>
 
+<% include("base/SelectByPrimaryKey.bt"){} %>
+
 </mapper>

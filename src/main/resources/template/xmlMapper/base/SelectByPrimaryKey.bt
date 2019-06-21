@@ -1,0 +1,7 @@
+
+    <select id = "selectByPrimaryKey" resultMap = "BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from ${table.name}
+        where ${table.pk[0].columnName} = #{${MeFunction.formatColumnName(table.pk[0].columnName)}}
+    </select>
