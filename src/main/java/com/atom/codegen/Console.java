@@ -87,22 +87,22 @@ public class Console {
 
         Component dao = new Component("/template/mapper/Dao.bt");
         dao.setName("dao");
-        dao.setOutFilePath(LoadProjectInfo.projectBase() + pConfig.getDaoPackageName().replace(".","\\") + "\\"+ "%sMapper.java");
+        dao.setOutFilePath(LoadProjectInfo.projectBase() + "\\java\\" + pConfig.getDaoPackageName().replace(".","\\") + "\\"+ "%sMapper.java");
         componentList.add(dao);
 
         Component entity = new Component("/template/entity/Entity.bt");
         entity.setName("entity");
-        entity.setOutFilePath(LoadProjectInfo.projectBase() + pConfig.getEntityPackageName().replace(".","\\") + "\\"+ "%s.java");
+        entity.setOutFilePath(LoadProjectInfo.projectBase() + "\\java\\" + pConfig.getEntityPackageName().replace(".","\\") + "\\"+ "%s.java");
         componentList.add(entity);
 
         Component service = new Component("/template/service/Service.bt");
         service.setName("service");
-        service.setOutFilePath(LoadProjectInfo.projectBase() + pConfig.getServicePackageName().replace(".","\\") + "\\"+ "%sService.java");
+        service.setOutFilePath(LoadProjectInfo.projectBase() + "\\java\\" + pConfig.getServicePackageName().replace(".","\\") + "\\"+ "%sService.java");
         componentList.add(service);
 
         Component serviceImpl = new Component("/template/serviceImpl/ServiceImpl.bt");
         serviceImpl.setName("serviceImpl");
-        serviceImpl.setOutFilePath(LoadProjectInfo.projectBase() + pConfig.getServicePackageImplName().replace(".","\\") + "\\"+ "%sServiceImpl.java");
+        serviceImpl.setOutFilePath(LoadProjectInfo.projectBase() + "\\java\\" + pConfig.getServicePackageImplName().replace(".","\\") + "\\"+ "%sServiceImpl.java");
         componentList.add(serviceImpl);
         Ioc.addBean("componentList",componentList);
     }

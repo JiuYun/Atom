@@ -138,7 +138,10 @@ public class FileUtil {
             file.createNewFile();
         }else{
             file = new File(filePath + File.separator + fileName);
-            if(!file.exists()){file.createNewFile();}
+            if(!file.exists()){file.createNewFile();}{
+                System.out.println(file.getAbsolutePath() + " 已存在,跳过生成 ");
+                return false;
+            }
         }
         FileOutputStream    fos = null;
         OutputStreamWriter  osw = null;

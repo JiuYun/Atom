@@ -16,7 +16,7 @@ public class LoadProjectInfo {
 
 
     public static String projectBase(){
-        return System.getProperty("user.dir") + "\\" + "src\\main\\java\\";
+        return System.getProperty("user.dir") + "\\" + "src\\main\\";
     }
 
     public static Map<String,Object> projectInfo(){
