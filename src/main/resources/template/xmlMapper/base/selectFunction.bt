@@ -1,0 +1,13 @@
+
+    <select id = "${selectModel.functionName}" parameterType = "" resultMap = "">
+        ${selectModel.formatContent}
+        <% if(selectModel.whereColumns.~size > 0) { %>
+        <where>
+        <% for(column in selectModel.whereColumns) { %>
+            <if test="">
+                ${column.oprator} ${column.expression}
+            </if>
+        <% } %>
+        </where>
+        <% } %>
+    </select>
